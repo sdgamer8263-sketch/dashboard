@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SKA Hosting Network</title>
+
+<!-- Fonts -->
+<link href="https://fonts.cdnfonts.com/css/minecraftia" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+:root {
+  --accent:#5865f2;
+  --text:#fff;
+  --subtext:#b0b3b8;
+  --radius:18px;
+  --shadow:0 8px 32px rgba(0,0,0,.35);
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+  min-height:100vh;
+  font-family:'Minecraftia',sans-serif;
+  color:var(--text);
+  background: url('dnf.gif') no-repeat center center fixed;
+  background-size: cover;
+  overflow-x:hidden;
+}
+
+/* PARTICLES */
+canvas{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+}
+
+/* HEADER */
+header{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:90px 20px;
+}
+
+.welcome-message{
+  font-family:'Montserrat',sans-serif;
+  font-size:3rem;
+  margin-bottom:25px;
+  background: linear-gradient(90deg, #ff0000, #ff7f00, #ffff00, #00ff00, #0000ff, #4b0082, #8f00ff);
+  background-size: 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: rainbow 6s linear infinite;
+  font-weight: bold;
+}
+
+@keyframes rainbow {
+  0%{background-position:0%}
+  100%{background-position:400%}
+}
+
+.main-btn{
+  display:inline-block;
+  margin-top:30px;
+  padding:18px 40px;
+  background:linear-gradient(90deg,#00ffea,#5865f2);
+  border-radius:18px;
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 0 25px #00ffea;
+  transition:.3s;
+}
+
+.main-btn:hover{transform:scale(1.1)}
+
+.discord{
+  margin-top:30px;
+}
+
+.discord a{
+  color:#5865f2;
+  font-size:4rem;
+  transition:.3s;
+}
+
+.discord a:hover{transform:scale(1.25)}
+
+/* INFO SECTION */
+.section{
+  max-width:900px;
+  margin:80px auto;
+  background:rgba(0,0,0,.6);
+  padding:40px;
+  border-radius:var(--radius);
+  text-align:center;
+  box-shadow:var(--shadow);
+  z-index:2;
+  position:relative;
+}
+
+.section h2{
+  color:#00ffea;
+  margin-bottom:20px;
+}
+
+.section p{
+  line-height:1.8;
+  color:var(--subtext);
+}
+
+footer{
+  text-align:center;
+  margin:40px 0;
+  opacity:.7;
+  font-size:.9rem;
+}
+
+/* TOOLS BUTTON */
+.tools-btn{
+  display:block;
+  margin:20px auto 0;
+  padding:18px 40px;
+  background:linear-gradient(90deg,#ff8c00,#ff0080);
+  border-radius:18px;
+  color:#fff;
+  text-decoration:none;
+  box-shadow:0 0 25px #ff8c00;
+  transition:.3s;
+}
+
+.tools-btn:hover{transform:scale(1.1);}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+
+<header>
+  <div class="welcome-message">DALDO and OSKA</div>
+
+  <a class="main-btn"
+     href="https://dashboardskahost.sgaming9107.qzz.io"
+     target="_blank">
+     GET MINECRAFT SERVER
+  </a>
+
+  <!-- TOOLS BUTTON -->
+  <a class="tools-btn"
+     href="https://sdgamer8263-sketch.github.io/tool/"
+     target="_blank">
+     TOOLS
+  </a>
+
+  <div class="discord">
+    <a href="https://discord.gg/C46pnM3Xz" target="_blank">
+      <i class="fa-brands fa-discord"></i>
+    </a>
+  </div>
+</header>
+
+<div class="section">
+  <h2>WHY CHOOSE US?</h2>
+  <p>
+    100% Free Minecraft Hosting<br>
+    Lag-Free Performance<br>
+    24/7 Uptime<br>
+    Active Discord Community
+  </p>
+</div>
+
+<footer>
+© 100% FREE MINECRAFT HOSTING
+</footer>
+
+<script>
+/* PARTICLES */
+const canvas=document.getElementById("particles");
+const ctx=canvas.getContext("2d");
+
+function resize(){
+  canvas.width=innerWidth;
+  canvas.height=innerHeight;
+}
+resize();
+window.addEventListener("resize",resize);
+
+let particles=[];
+for(let i=0;i<70;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*3+1,
+    s:Math.random()*1+0.5
+  });
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.fillStyle="rgba(0,255,234,.6)";
+  particles.forEach(p=>{
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fill();
+    p.y-=p.s;
+    if(p.y<0)p.y=canvas.height;
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+</body>
+</html>
